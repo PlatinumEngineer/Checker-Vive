@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Checkers</title>
+    <meta name="description" content="Hello, WebVR! - A-Frame">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script  src="https://rawgit.com/fernandojsg/aframe-input-mapping-component/master/dist/aframe-inputmapping-component.min.js"></script>
+    <script src="https://cdn.rawgit.com/aframevr/aframe/master/dist/aframe.min.js"></script> 
+    <script src="https://rawgit.com/bryik/aframe-vive-cursor-component/master/dist/aframe-vive-cursor-component.min.js"></script> 
+    <script src="https://rawgit.com/wmurphyrd/aframe-super-hands-component/master/dist/super-hands.min.js"></script>
+	<script src="board.js"></script>
+    <script type="text/javascript">
+	/*
+      function add()
+      {
+        var a = document.getElementById("ID").value;
+        var b = document.getElementById("t1").value;
+        var c = document.getElementById("t2").value;
+        b = parseInt(b);
+        c = parseInt(c);
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        document.getElementById('s'+a).setAttribute("position", b+' 1 '+c);
+        document.getElementById('s'+a).setAttribute.animation("to", '1 1 1');
+      }
+	  */
+    </script>
+  </head>
+  
+  <body>
+    <!--
+    ID<input type="text" name="" id="ID">
+    X<input type="text" name="" id="t1">
+    Y<input type="text" name="" id="t2">
+    <button onclick="add()">Enter</button>
+	-->
+    <a-scene physics="" vr-mode-ui= "enabled: true">;
+      
+	  <a-assets>
+        <a-mixin id="cube" dynamic-body="" geometry="primitive: box; width: 2; height: 2; depth: 2" hoverable="" grabbable="" stretchable="" draggable="" droppable="" shadow="" event-set="_event: drag-drop; geometry.primitive: sphere; geometry.radius: 0.25"></a-mixin>
+		<a-mixin id="progressivecontrolsgazedefault" geometry="primitive: ring;radiusOuter: 0.008; radiusInner: 0.005; segmentsTheta: 32" material="color: #000; shader: flat" position="0 0 -0.5" raycaster="objects:.cube, a-link" super-hands="colliderEvent:raycaster-intersection;colliderEventProperty:els;colliderEndEvent:raycaster-intersection-cleared;colliderEndEventProperty:el;colliderState:"></a-mixin>
+		<a-mixin id="progressivecontrolspointdefault" raycaster="showLine:true;objects:.cube, a-link" super-hands="colliderEvent:raycaster-intersection;colliderEventProperty:els;colliderEndEvent:raycaster-intersection-cleared;colliderEndEventProperty:el;colliderState:"></a-mixin>
+		<a-mixin id="progressivecontrolstouchdefault" super-hands="" sphere-collider=""></a-mixin>
+	  </a-assets>
+	  
+	  <a-entity progressive-controls="objects: .sphere, a-link; maxLevel: point" position="" rotation="" scale="" visible="">
+          <a-entity id="rhand" class="right-controller" position="16 24 -14" rotation="-90 0 0" scale="" visible="" vive-controls=""  tracked-controls="" obj-model="" mixin="progressivecontrolspointdefault " line="" raycaster="" super-hands="" stroke="" motion-capture-recorder=""></a-entity>
+		  <a-entity id="lhand" class="left-controller" position="16 24 -14" rotation="-90 0 0" scale="" visible=""  vive-controls=""  tracked-controls="" obj-model="" mixin="progressivecontrolspointdefault " line="" raycaster="" super-hands="" stroke="" motion-capture-recorder=""></a-entity>
+		  <a-camera position="16 24 -14" rotation="-90 0 0" scale="" visible="" camera="" look-controls="" wasd-controls="acceleration: 300"></a-camera></a-entity>
+      </a-entity>
+    
+      <a-sky color="#4c4c4c"></a-sky>    
+     
+	    <a-entity class="cube" mixin="cube" position="0 1 -24" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="0 1 -16" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="0 1 -8" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="0 1 -0" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="4 1 -28" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="4 1 -20" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="4 1 -12" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="4 1 -4" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="8 1 -24" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="8 1 -16" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="8 1 -8" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="8 1 -0" material="color: red" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		
+		<a-entity class="cube" mixin="cube" position="28 1 -28" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="28 1 -20" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="28 1 -12" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="28 1 -4" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="24 1 -24" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="24 1 -16" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="24 1 -8" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="24 1 0" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="20 1 -28" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="20 1 -20" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="20 1 -12" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+		<a-entity class="cube" mixin="cube" position="20 1 -4" material="color: black" rotation="" scale="" visible="" geometry="" hoverable="" grabbable="" stretchable="" draggable="" droppable=""></a-entity>
+      
+      <!-- Outsides -->
+      <a-plane id="leftNumbers1" position="0 0 -32" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="leftNumbers2" position="4 0 -32" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="leftNumbers3" position="8 0 -32" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="leftNumbers4" position="12 0 -32" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="leftNumbers5" position="16 0 -32" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="leftNumbers6" position="20 0 -32" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="leftNumbers7" position="24 0 -32" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="leftNumbers8" position="28 0 -32" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+   
+      <a-plane id="rightNumbers1" position="0 0 4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="rightNumbers2" position="4 0 4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="rightNumbers3" position="8 0 4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="rightNumbers4" position="12 0 4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="rightNumbers5" position="16 0 4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="rightNumbers6" position="20 0 4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="rightNumbers7" position="24 0 4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="rightNumbers8" position="28 0 4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+ 
+      <a-plane id="frontLetters1" position="32 0 0" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="frontLetters2" position="32 0 -4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="frontLetters3" position="32 0 -8" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="frontLetters4" position="32 0 -12" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="frontLetters5" position="32 0 -16" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="frontLetters6" position="32 0 -20" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="frontLetters7" position="32 0 -24" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="frontLetters8" position="32 0 -28" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      
+      <a-plane id="backLetters1" position="-4 0 0" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="backLetters2" position="-4 0 -4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="backLetters3" position="-4 0 -8" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="backLetters4" position="-4 0 -12" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="backLetters5" position="-4 0 -16" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="backLetters6" position="-4 0 -20" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="backLetters7" position="-4 0 -24" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="backLetters8" position="-4 0 -28" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+	  
+	  <!-- Corners -->
+	  <a-plane id="corner1" position="-4 0 4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="corner2" position="32 0 -32" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="corner3" position="-4 0 -32" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+      <a-plane id="corner4" position="32 0 4" rotation="-90 0 0" width="4" height="4" color="#4f4338" shadow></a-plane>
+	  
+      <!-- Row 1 -->
+      <a-plane id="p1" position="0 0 -28" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane id="p2" position="0 0 -24" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane id="p3" position="0 0 -20" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane id="p4" position="0 0 -16" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane id="p5" position="0 0 -12" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane id="p6" position="0 0 -8" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane id="p7" position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane id="p8" position="0 0 0" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <!-- Row 2 -->
+      <a-plane position="4 0 -28" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="4 0 -24" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="4 0 -20" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="4 0 -16" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="4 0 -12" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="4 0 -8" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="4 0 -4" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="4 0 0" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <!-- Row 3 -->
+      <a-plane position="8 0 -28" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="8 0 -24" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="8 0 -20" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="8 0 -16" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="8 0 -12" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="8 0 -8" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="8 0 -4" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="8 0 0" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <!-- Row 4 -->
+      <a-plane position="12 0 -28" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="12 0 -24" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="12 0 -20" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="12 0 -16" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="12 0 -12" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="12 0 -8" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="12 0 -4" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="12 0 0" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <!-- Row 5 -->
+      <a-plane position="16 0 -28" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="16 0 -24" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="16 0 -20" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="16 0 -16" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="16 0 -12" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="16 0 -8" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="16 0 -4" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="16 0 0" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <!-- Row 6 -->
+      <a-plane position="20 0 -28" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="20 0 -24" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="20 0 -20" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="20 0 -16" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="20 0 -12" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="20 0 -8" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="20 0 -4" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="20 0 0" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <!-- Row 7 -->
+      <a-plane position="24 0 -28" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="24 0 -24" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="24 0 -20" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="24 0 -16" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="24 0 -12" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="24 0 -8" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="24 0 -4" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="24 0 0" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <!-- Row 8 -->
+      <a-plane position="28 0 -28" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="28 0 -24" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="28 0 -20" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="28 0 -16" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="28 0 -12" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="28 0 -8" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      <a-plane position="28 0 -4" rotation="-90 0 0" width="4" height="4" color="#FFFFFF" shadow></a-plane>
+      <a-plane position="28 0 0" rotation="-90 0 0" width="4" height="4" color="#000000" shadow></a-plane>
+      
+      <!-- Table -->
+      <!--<a-plane position="14 0 -14" rotation="-90 0 0" length="50" width="50" src="brick_bump.jpg" ></a-plane>-->
+    </a-scene>
+  </body>
+</html>
